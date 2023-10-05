@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  data_nascimento: 2023-10-05
+  genero: MyString
+  bio: MyString
+  fotos: MyString
+  localizacao: MyString
+  preferencia_match: MyString
+  orientacao_sexual: MyString
+
+two:
+  nome: MyString
+  data_nascimento: 2023-10-05
+  genero: MyString
+  bio: MyString
+  fotos: MyString
+  localizacao: MyString
+  preferencia_match: MyString
+  orientacao_sexual: MyString
