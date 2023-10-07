@@ -1,11 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  person_id: MyString
-  url: MyString
   person: one
+  url: MyString
 
 two:
-  person_id: MyString
-  url: MyString
   person: two
+  url: MyString

@@ -2,10 +2,8 @@
 
 one:
   user: one
-  match: one
   status: MyString
 
 two:
   user: two
-  match: two
   status: MyString

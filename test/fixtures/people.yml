@@ -7,6 +7,7 @@ one:
   bio: MyString
   location: MyString
   match_preference: MyString
+  sexual_orientation: MyString
 
 two:
   name: MyString
@@ -15,3 +16,4 @@ two:
   bio: MyString
   location: MyString
   match_preference: MyString
+  sexual_orientation: MyString

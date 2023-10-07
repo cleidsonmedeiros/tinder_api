@@ -7,6 +7,7 @@ class CreatePeople < ActiveRecord::Migration[7.0]
       t.string :bio
       t.string :location
       t.string :match_preference
+      t.string :sexual_orientation
 
       t.timestamps
     end

@@ -1,8 +1,8 @@
 class CreateMatches < ActiveRecord::Migration[7.0]
   def change
     create_table :matches do |t|
-      t.references :user, null: false, foreign_key: true, column: :user_id
-      t.references :user, null: false, foreign_key: true, column: :match_id
+      t.references :user, foreign_key: { to_table: :users }
+      t.references :match, foreign_key: { to_table: :users }
       t.string :status
 
       t.timestamps
