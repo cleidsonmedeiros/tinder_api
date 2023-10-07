@@ -1,21 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
-  data_nascimento: 2023-10-05
-  genero: MyString
+  name: MyString
+  birthday: 2023-10-07
+  gender: MyString
   bio: MyString
-  fotos: MyString
-  localizacao: MyString
-  preferencia_match: MyString
-  orientacao_sexual: MyString
+  location: MyString
+  match_preference: MyString
 
 two:
-  nome: MyString
-  data_nascimento: 2023-10-05
-  genero: MyString
+  name: MyString
+  birthday: 2023-10-07
+  gender: MyString
   bio: MyString
-  fotos: MyString
-  localizacao: MyString
-  preferencia_match: MyString
-  orientacao_sexual: MyString
+  location: MyString
+  match_preference: MyString
