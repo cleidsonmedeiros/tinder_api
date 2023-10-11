@@ -11,22 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_10_07_205855) do
-  create_table "images", force: :cascade do |t|
-    t.integer "person_id", null: false
-    t.string "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_images_on_person_id"
-  end
-
   create_table "matches", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "match_id"
+    t.integer "person_id"
+    t.integer "matched_person_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["match_id"], name: "index_matches_on_match_id"
-    t.index ["user_id"], name: "index_matches_on_user_id"
+    t.index ["matched_person_id"], name: "index_matches_on_matched_person_id"
+    t.index ["person_id"], name: "index_matches_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -48,7 +40,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_205855) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "images", "people"
-  add_foreign_key "matches", "users"
-  add_foreign_key "matches", "users", column: "match_id"
+  add_foreign_key "matches", "people"
+  add_foreign_key "matches", "people", column: "matched_person_id"
 end
