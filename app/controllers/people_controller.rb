@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
-    before_action :set_person, only: [:user_profile, :update, :index]
+    before_action :set_person, except: [:create]
+    before_action :set_unmatched_person, except: [:create]
     
     def user_profile
 
@@ -9,22 +10,33 @@ class PeopleController < ApplicationController
 
     def index
 
-        unmatched_people = Person.where.not(id: @person.matches.pluck(:matched_person_id))
-
-        #Match.create(user: current_user, match: person, status: 'Não')
-
-        render json: unmatched_people
+        render json: @unmatched_person
 
     end
 
+    def create_match
+
+        @match = Match.new(person_id: @person.id, matched_person_id: @unmatched_person.id, status: match_params)
+
+        if @match.save
+
+            render json: @unmatched_person, status: :created
+        else
+
+            render json: { errors: @match.errors.full_messages }, status: :unprocessable_entity
+        end
+
+    end
 
     def create
 
         @person = Person.new(person_params)
 
         if @person.save 
+
             render json: @person, status: :created
         else
+            
             render json: { errors: @person.errors.full_messages }, status: :unprocessable_entity
         end
 
@@ -51,9 +63,17 @@ class PeopleController < ApplicationController
 
     end
 
+    def set_unmatched_person
+
+        unmatched_people = Person.where.not(id: @person.matches.pluck(:matched_person_id) << @person.id)
+
+        @unmatched_person = unmatched_people.sample
+
+    end
+
     def person_params
 
-        params.require(:person).permit(
+        params.permit(
 
                 :name, 
                 :birthday,
@@ -65,4 +85,13 @@ class PeopleController < ApplicationController
 
             )
     end
+
+    def match_params
+
+        params.permit(
+            :status
+
+        )
+    end
+
 end

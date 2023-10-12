@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post 'people/profile', to: 'people#create'
 
+  post 'people/:id/match', to: 'people#create_match'
+
   put 'people/profile/:id', to: 'people#update'
   # Defines the root path route ("/")
   # root "articles#index"
