@@ -8,7 +8,7 @@ class PeopleController < ApplicationController
 
     end
 
-    def index
+    def person_to_match
 
         render json: @unmatched_person
 
@@ -65,9 +65,7 @@ class PeopleController < ApplicationController
 
     def set_unmatched_person
 
-        unmatched_people = Person.where.not(id: @person.matches.pluck(:matched_person_id) << @person.id)
-
-        @unmatched_person = unmatched_people.sample
+        @unmatched_person = Person.where.not(id: @person.matches.pluck(:matched_person_id) << @person.id).sample
 
     end
 
